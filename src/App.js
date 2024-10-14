@@ -161,52 +161,79 @@ const totale = imponibile + iva; // Totale è uguale al prezzo finale già inclu
 // Stili per il form
 const formStyles = {
   container: {
-    maxWidth: "600px",
-    margin: "0 auto",
-    padding: "20px",
-    fontFamily: "Arial, sans-serif",
-    backgroundColor: "#f7f7f7",
-    borderRadius: "8px",
-    boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    padding: '20px',
+    maxWidth: '600px',
+    margin: '0 auto',
   },
   formGroup: {
-    marginBottom: "15px",
+    width: '100%',
+    marginBottom: '15px',
+    display: 'flex',
+    flexDirection: 'column',
   },
   label: {
-    display: "block",
-    fontSize: "14px",
-    fontWeight: "bold",
-    marginBottom: "5px",
+    marginBottom: '5px',
+    fontSize: '16px',
+    fontWeight: 'bold',
   },
   input: {
-    width: "100%",
-    padding: "10px",
-    borderRadius: "4px",
-    border: "1px solid #ccc",
-    fontSize: "14px",
-  },
-  button: {
-    padding: "10px 20px",
-    backgroundColor: "#4CAF50",
-    color: "#fff",
-    border: "none",
-    borderRadius: "4px",
-    cursor: "pointer",
-    fontSize: "16px",
-    marginTop: "10px",
+    padding: '10px',
+    fontSize: '16px',
+    borderRadius: '4px',
+    border: '1px solid #ccc',
+    width: '100%',
+    boxSizing: 'border-box',
   },
   buttonAdd: {
-    padding: "10px 15px",
-    backgroundColor: "#2196F3",
-    color: "#fff",
-    border: "none",
-    borderRadius: "4px",
-    cursor: "pointer",
-    fontSize: "14px",
-    marginTop: "10px",
-    marginBottom: "15px",
+    padding: '10px 20px',
+    fontSize: '16px',
+    backgroundColor: '#28a745',
+    color: 'white',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    marginTop: '20px',
+  },
+  buttonDownload: {
+    padding: '10px 20px',
+    fontSize: '16px',
+    backgroundColor: '#007bff',
+    color: 'white',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    marginTop: '20px',
+    textAlign: 'center',
   },
 };
+
+const mobileStyles = {
+  '@media (max-width: 600px)': {
+    formGroup: {
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+    },
+    label: {
+      fontSize: '14px',
+    },
+    input: {
+      fontSize: '14px',
+      padding: '8px',
+    },
+    buttonAdd: {
+      fontSize: '14px',
+      padding: '8px 15px',
+    },
+    buttonDownload: {
+      fontSize: '14px',
+      padding: '8px 15px',
+    },
+  },
+};
+
 
 // Form per inserire i dati del trainer, cliente e dei servizi
 const TrainerForm = () => {
@@ -245,9 +272,9 @@ const TrainerForm = () => {
   };
 
   return (
-    <div style={formStyles.container}>
+    <div style={{ ...formStyles.container, ...mobileStyles.container }}>
       <h2>Inserisci i dati del trainer</h2>
-      {/* Campi del trainer */}
+  
       <div style={formStyles.formGroup}>
         <label style={formStyles.label}>Nome Trainer</label>
         <input
@@ -257,6 +284,7 @@ const TrainerForm = () => {
           onChange={(e) => setTrainerData({ ...trainerData, name: e.target.value })}
         />
       </div>
+      
       <div style={formStyles.formGroup}>
         <label style={formStyles.label}>Indirizzo Trainer</label>
         <input
@@ -266,73 +294,9 @@ const TrainerForm = () => {
           onChange={(e) => setTrainerData({ ...trainerData, address: e.target.value })}
         />
       </div>
-      <div style={formStyles.formGroup}>
-        <label style={formStyles.label}>Partita IVA Trainer</label>
-        <input
-          style={formStyles.input}
-          type="text"
-          value={trainerData.vatNumber}
-          onChange={(e) => setTrainerData({ ...trainerData, vatNumber: e.target.value })}
-        />
-      </div>
-      <div style={formStyles.formGroup}>
-        <label style={formStyles.label}>Nome Studio</label>
-        <input
-          style={formStyles.input}
-          type="text"
-          value={trainerData.studioName}
-          onChange={(e) => setTrainerData({ ...trainerData, studioName: e.target.value })}
-        />
-      </div>
-      <div style={formStyles.formGroup}>
-        <label style={formStyles.label}>Indirizzo Studio</label>
-        <input
-          style={formStyles.input}
-          type="text"
-          value={trainerData.studioAddress}
-          onChange={(e) => setTrainerData({ ...trainerData, studioAddress: e.target.value })}
-        />
-      </div>
-      <div style={formStyles.formGroup}>
-        <label style={formStyles.label}>Partita IVA Studio</label>
-        <input
-          style={formStyles.input}
-          type="text"
-          value={trainerData.studioVatNumber}
-          onChange={(e) => setTrainerData({ ...trainerData, studioVatNumber: e.target.value })}
-        />
-      </div>
-      <div style={formStyles.formGroup}>
-        <label style={formStyles.label}>Numero Fattura</label>
-        <input
-          style={formStyles.input}
-          type="text"
-          value={trainerData.invoiceNumber}
-          onChange={(e) => setTrainerData({ ...trainerData, invoiceNumber: e.target.value })}
-        />
-      </div>
-      <div style={formStyles.formGroup}>
-        <label style={formStyles.label}>Data Fattura</label>
-        <input
-          style={formStyles.input}
-          type="date"
-          value={trainerData.invoiceDate}
-          onChange={(e) => setTrainerData({ ...trainerData, invoiceDate: e.target.value })}
-        />
-      </div>
-      <div style={formStyles.formGroup}>
-        <label style={formStyles.label}>Coordinate Bancarie</label>
-        <input
-          style={formStyles.input}
-          type="text"
-          value={trainerData.bankAccount}
-          onChange={(e) => setTrainerData({ ...trainerData, bankAccount: e.target.value })}
-        />
-      </div>
-  
+      
       {/* Dati del cliente */}
       <h2>Inserisci i dati del cliente</h2>
-      {/* Campi del cliente */}
       <div style={formStyles.formGroup}>
         <label style={formStyles.label}>Nome Cliente</label>
         <input
@@ -342,6 +306,7 @@ const TrainerForm = () => {
           onChange={(e) => setClientData({ ...clientData, name: e.target.value })}
         />
       </div>
+      
       <div style={formStyles.formGroup}>
         <label style={formStyles.label}>Indirizzo Cliente</label>
         <input
@@ -351,9 +316,8 @@ const TrainerForm = () => {
           onChange={(e) => setClientData({ ...clientData, address: e.target.value })}
         />
       </div>
-
-  
-      {/* Dati dei servizi */}
+      
+      {/* Servizi */}
       <h2>Servizi</h2>
       {services.map((service, index) => (
         <div key={index} style={formStyles.formGroup}>
@@ -364,55 +328,56 @@ const TrainerForm = () => {
             value={service.description}
             onChange={(e) => handleServiceChange(index, "description", e.target.value)}
           />
-        <label style={formStyles.label}>Quantità</label>
-        <input
-          style={formStyles.input}
-          type="number"
-          placeholder="Quantità"
-          min="0"
-          value={service.quantity || ""}
-          inputMode="numeric" // Consente solo numeri su tastiere mobili
-          onKeyPress={(e) => {
-            if (!/^\d$/.test(e.key)) { // Permette solo cifre
-              e.preventDefault();
-            }
-          }}
-          onChange={(e) => handleServiceChange(index, "quantity", e.target.value)}
-        />
-
-        <label style={formStyles.label}>Prezzo</label>
-        <input
-          style={formStyles.input}
-          type="number"
-          placeholder="Prezzo Unitario (inclusa IVA)"
-          value={service.unitPrice || ""}
-          min="0"
-          inputMode="numeric" // Consente solo numeri su tastiere mobili
-          onKeyPress={(e) => {
-            if (!/^\d$/.test(e.key)) { // Permette solo cifre
-              e.preventDefault();
-            }
-          }}
-          onChange={(e) => handleServiceChange(index, "unitPrice", e.target.value)}
-        />
-
-                </div>
+          
+          <label style={formStyles.label}>Quantità</label>
+          <input
+            style={formStyles.input}
+            type="number"
+            placeholder="Quantità"
+            min="0"
+            value={service.quantity || ""}
+            inputMode="numeric"
+            onKeyPress={(e) => {
+              if (!/^\d$/.test(e.key)) {
+                e.preventDefault();
+              }
+            }}
+            onChange={(e) => handleServiceChange(index, "quantity", e.target.value)}
+          />
+          
+          <label style={formStyles.label}>Prezzo</label>
+          <input
+            style={formStyles.input}
+            type="number"
+            placeholder="Prezzo Unitario (inclusa IVA)"
+            value={service.unitPrice || ""}
+            min="0"
+            inputMode="numeric"
+            onKeyPress={(e) => {
+              if (!/^\d$/.test(e.key)) {
+                e.preventDefault();
+              }
+            }}
+            onChange={(e) => handleServiceChange(index, "unitPrice", e.target.value)}
+          />
+        </div>
       ))}
       <button style={formStyles.buttonAdd} onClick={addService}>
         Aggiungi Servizio
       </button>
   
-      {/* Link per scaricare il PDF */}
-      <PDFDownloadLink
-        document={<InvoicePDF trainerData={trainerData} clientData={clientData} services={services} />}
-        fileName="fattura.pdf"
-      >
-        {({ loading }) =>
-          loading ? "Generazione PDF in corso..." : "Scarica Fattura PDF"
-        }
-      </PDFDownloadLink>
+      {/* Bottone per scaricare il PDF */}
+      <button style={formStyles.buttonDownload}>
+        <PDFDownloadLink
+          document={<InvoicePDF trainerData={trainerData} clientData={clientData} services={services} />}
+          fileName="fattura.pdf"
+        >
+          {({ loading }) => (loading ? "Generazione PDF in corso..." : "Scarica Fattura PDF")}
+        </PDFDownloadLink>
+      </button>
     </div>
   );
+  
   
 };
 
