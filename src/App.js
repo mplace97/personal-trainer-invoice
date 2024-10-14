@@ -305,6 +305,16 @@ const TrainerForm = () => {
       onChange={(e) => setTrainerData({ ...trainerData, vatNumber: e.target.value })}
     />
   </div>
+  
+  <div style={formStyles.formGroup}>
+    <label style={formStyles.label}>Coordinate Bancarie</label>
+    <input
+      style={formStyles.input}
+      type="text"
+      value={trainerData.bankAccount}
+      onChange={(e) => setTrainerData({ ...trainerData, bankAccount: e.target.value })}
+    />
+ </div>
 
       {/* Campo per il Numero Fattura */}
     <div style={formStyles.formGroup}>
