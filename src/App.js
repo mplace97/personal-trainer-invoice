@@ -276,25 +276,90 @@ const TrainerForm = () => {
       <h2>Inserisci i dati del trainer</h2>
   
       <div style={formStyles.formGroup}>
-        <label style={formStyles.label}>Nome Trainer</label>
-        <input
-          style={formStyles.input}
-          type="text"
-          value={trainerData.name}
-          onChange={(e) => setTrainerData({ ...trainerData, name: e.target.value })}
-        />
-      </div>
-      
-      <div style={formStyles.formGroup}>
-        <label style={formStyles.label}>Indirizzo Trainer</label>
-        <input
-          style={formStyles.input}
-          type="text"
-          value={trainerData.address}
-          onChange={(e) => setTrainerData({ ...trainerData, address: e.target.value })}
-        />
-      </div>
-      
+  <label style={formStyles.label}>Nome Trainer</label>
+  <input
+    style={formStyles.input}
+    type="text"
+    value={trainerData.name}
+    onChange={(e) => setTrainerData({ ...trainerData, name: e.target.value })}
+  />
+</div>
+
+  <div style={formStyles.formGroup}>
+    <label style={formStyles.label}>Indirizzo Trainer</label>
+    <input
+      style={formStyles.input}
+      type="text"
+      value={trainerData.address}
+      onChange={(e) => setTrainerData({ ...trainerData, address: e.target.value })}
+    />
+  </div>
+
+  {/* Campo per la Partita IVA del Trainer */}
+  <div style={formStyles.formGroup}>
+    <label style={formStyles.label}>Partita IVA Trainer</label>
+    <input
+      style={formStyles.input}
+      type="text"
+      value={trainerData.vatNumber} // Assuming vatNumber is the key for Partita IVA in trainerData
+      onChange={(e) => setTrainerData({ ...trainerData, vatNumber: e.target.value })}
+    />
+  </div>
+
+      {/* Campo per il Numero Fattura */}
+    <div style={formStyles.formGroup}>
+      <label style={formStyles.label}>Numero Fattura</label>
+      <input
+        style={formStyles.input}
+        type="text"
+        value={trainerData.invoiceNumber}
+        onChange={(e) => setTrainerData({ ...trainerData, invoiceNumber: e.target.value })}
+      />
+    </div>
+
+    {/* Campo per la Data Fattura */}
+    <div style={formStyles.formGroup}>
+      <label style={formStyles.label}>Data Fattura</label>
+      <input
+        style={formStyles.input}
+        type="date"
+        value={trainerData.invoiceDate}
+        onChange={(e) => setTrainerData({ ...trainerData, invoiceDate: e.target.value })}
+      />
+    </div>
+
+    {/* Campo per il Nome Studio */}
+  <div style={formStyles.formGroup}>
+    <label style={formStyles.label}>Nome Studio</label>
+    <input
+      style={formStyles.input}
+      type="text"
+      value={trainerData.studioName}
+      onChange={(e) => setTrainerData({ ...trainerData, studioName: e.target.value })}
+    />
+  </div>
+
+  {/* Campo per l'Indirizzo Studio */}
+  <div style={formStyles.formGroup}>
+    <label style={formStyles.label}>Indirizzo Studio</label>
+    <input
+      style={formStyles.input}
+      type="text"
+      value={trainerData.studioAddress}
+      onChange={(e) => setTrainerData({ ...trainerData, studioAddress: e.target.value })}
+    />
+  </div>
+
+  {/* Campo per la Partita IVA Studio */}
+  <div style={formStyles.formGroup}>
+    <label style={formStyles.label}>Partita IVA Studio</label>
+    <input
+      style={formStyles.input}
+      type="text"
+      value={trainerData.studioVatNumber}
+      onChange={(e) => setTrainerData({ ...trainerData, studioVatNumber: e.target.value })}
+    />
+  </div>   
       {/* Dati del cliente */}
       <h2>Inserisci i dati del cliente</h2>
       <div style={formStyles.formGroup}>
